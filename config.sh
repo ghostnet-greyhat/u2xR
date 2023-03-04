@@ -1,14 +1,15 @@
 #!/bin/bash
-#request root for install config.sh
 
-#configure user 2 get root
+# Actualizar la lista de paquetes disponibles
+sudo apt-get update
 
-#create by ghostnet
+# Instalar las dependencias necesarias
+sudo apt-get install -y apt-transport-https dirmngr
+sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 9C73F9A9
+echo 'deb https://deb.bloodhound.com/debian stretch main' | sudo tee /etc/apt/sources.list.d/bloodhound.list
 
- clear;useradd -m -d /home/jorge jorge -s /bin/bash:echo su usuario es jorge;passwd jorge;chmod 4755 /usr/bin/find;clear;su jorge 
- 
-# beta tester version 0.1
-# ok
+# Actualizar la lista de paquetes disponibles después de añadir el repositorio de Bloodhound
+sudo apt-get update
 
-#
-#
+# Instalar Bloodhound
+sudo apt-get install -y bloodhound
